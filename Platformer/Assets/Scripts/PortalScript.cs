@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(BoxCollider2D))]
 public class PortalScript : MonoBehaviour
 {
     [SerializeField] private string sceneName;

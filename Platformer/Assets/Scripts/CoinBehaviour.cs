@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(BoxCollider2D))]
+
 public class CoinBehaviour : MonoBehaviour
 {
+
     private UICoinScript uiCoinScript;
 
     private void Awake()

@@ -7,7 +7,7 @@ public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private GameObject heartUIPrefab;
     [SerializeField] private float offset;
-    [SerializeField] private int healthPoints = 3;
+    [SerializeField] private int healthPoints;
     [SerializeField] private UnityEvent gameOverEvent;
 
     private Vector2 positionOnScreen = Vector2.zero;
@@ -16,6 +16,7 @@ public class PlayerHealth : MonoBehaviour
 
     public bool hasLost { get; set; } = false;
 
+    
     private void OnValidate()
     {
         if (healthPoints < 1)

@@ -12,19 +12,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject playerBody;
     [SerializeField] private PlayerHealth playerHealthScript;
 
+
     private Rigidbody2D playerRigidbody;
     private SpriteRenderer playerSpriteRenderer;
     private bool isGrounded;
 
-    public bool IsJumping = false;
-    public bool IsWalking = false;
+    public bool IsJumping { get; set; } = false;
+    public bool IsHurt { get; set; } = false;
 
-    public bool IsMovingLeft = false;
-    public bool IsMovingRight = false;
+    private bool IsMovingLeft = false;
+    private bool IsMovingRight = false;
 
     private float jumpTimeCounter = 0;
 
-   
 
     void Start()
     {
@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             isGrounded = true;
+            IsJumping = false;
         }
     }
   
@@ -57,17 +58,14 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             playerRigidbody.velocity = new Vector2(-movementSpeed, playerRigidbody.velocity.y);
-            playerSpriteRenderer.flipX = true;
-            IsWalking = true;
+            playerSpriteRenderer.flipX = false;
             IsMovingRight = false;
             IsMovingLeft = true;
         }
         else if (Input.GetKey(KeyCode.D))
         {
             playerRigidbody.velocity = new Vector2(movementSpeed, playerRigidbody.velocity.y);
-            playerSpriteRenderer.flipX = false;
-            IsWalking = true;
-
+            playerSpriteRenderer.flipX = true;
             IsMovingRight = true;
             IsMovingLeft = false;
 
@@ -94,6 +92,7 @@ public class PlayerController : MonoBehaviour
         PlayerLongerJump();
     }
 
+    
     private void PlayerLongerJump()
     {
         if (Input.GetKey(KeyCode.Space) && IsJumping)

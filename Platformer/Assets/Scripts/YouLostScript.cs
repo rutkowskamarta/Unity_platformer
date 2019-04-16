@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class YouLostScript : MonoBehaviour
 {
     [SerializeField] private GameObject gameoverContent;
+    [SerializeField] private string initialSceneName = "Scene1";
 
     private bool isLost = false;
 
@@ -28,8 +29,7 @@ public class YouLostScript : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Return) && isLost)
         {
-            Scene activeScene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(activeScene.name);
+            SceneManager.LoadScene(initialSceneName);
         }
     }
 
